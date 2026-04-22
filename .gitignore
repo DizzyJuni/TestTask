@@ -1,33 +1,40 @@
-HELP.md
+# Compiled files
 target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+*.jar
+*.war
+*.ear
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDE
+.idea/
 *.iml
-*.ipr
+.mvn/
+.settings/
+.project
+.classpath
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# Logs
+*.log
+jmeter.log
 
-### VS Code ###
-.vscode/
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+
+# Test scripts (твои локальные скрипты)
+correct-load-test.sh
+fixed-load-test.sh
+run-wallet-test.sh
+simple-load-test.sh
+
+# Maven wrapper (опционально, можно и оставить)
+mvnw
+mvnw.cmd
+
+# Helpers
+HELP.md
+
+# Docker
+*.pid
