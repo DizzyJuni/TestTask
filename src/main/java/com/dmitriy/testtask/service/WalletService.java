@@ -2,6 +2,7 @@ package com.dmitriy.testtask.service;
 
 import com.dmitriy.testtask.dto.BalanceResponse;
 import com.dmitriy.testtask.dto.OperationRequest;
+import com.dmitriy.testtask.dto.WalletRequest;
 import com.dmitriy.testtask.entity.Wallet;
 import com.dmitriy.testtask.enums.OperationTypes;
 import com.dmitriy.testtask.exceptions.InsufficientFundsException;
@@ -51,6 +52,16 @@ public class WalletService {
         walletRepository.save(wallet);
 
         log.info("Operation completed. New balance for wallet {}: {}", walletId, newBalance);
+    }
+
+    public void createWallet(WalletRequest request) {
+        Wallet wallet = new Wallet();
+
+        wallet.setAmount(request.amount() != null
+                ? request.amount()
+                : BigDecimal.ZERO);
+        Wallet saved = walletRepository.save(wallet);
+        log.info("Created wallet with id: {}, balance: {}", saved.getId(), saved.getAmount());
     }
 
     public BalanceResponse getBalance(UUID id) {

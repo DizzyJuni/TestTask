@@ -2,6 +2,7 @@ package com.dmitriy.testtask.controller;
 
 import com.dmitriy.testtask.dto.BalanceResponse;
 import com.dmitriy.testtask.dto.OperationRequest;
+import com.dmitriy.testtask.dto.WalletRequest;
 import com.dmitriy.testtask.service.WalletService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,5 +33,12 @@ public class WalletController {
     @Operation(summary = "Получить баланс кошелька")
     public ResponseEntity<BalanceResponse> getBalanceById(@PathVariable("id") UUID id) {
         return ResponseEntity.ok(walletService.getBalance(id));
+    }
+
+    @PostMapping("/wallet/new")
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Добавление в БД нового кошелька")
+    public void createWallet(@Valid @RequestBody WalletRequest request) {
+        walletService.createWallet(request);
     }
 }
